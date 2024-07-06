@@ -1,0 +1,40 @@
+<div class="lists-container">
+  <div class="lists-container__header">
+    <div class="lists-container__header__name">
+        {{lists.name | titlecase}}
+    </div>
+    <div class="lists-container__header__action">
+        <button mat-icon-button [matMenuTriggerFor]="menu" [matMenuTriggerData]="{listObj: lists,index:formIndex}"
+                class="lists-container__header__aciton--edit-btn"
+                aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+       </button>
+      <!-- <button type="button" class="lists-container__header__action--delete-btn">Delete</button> -->
+    </div>
+  </div>
+  <div class="lists-container__items">
+    <div class="lists-container__items__fields">
+      <span class="lists-container__items__fields__location">Location: {{lists.location}}</span>
+      <span class="lists-container__items__fields__phone">Contact: <b>{{lists.phone}}</b> </span>
+      <span class="lists-container__items__fields__email">Email: {{lists.email}}</span>
+
+    </div>
+    <div class="lists-container__items__description">
+      <div class="lists-container__items__fields__email">Type of Restaurant: {{lists.style | titlecase}}</div>
+      <div class="lists-container__items__email">{{lists.description}}</div>
+    </div>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-listObj="listObj" let-index="index">
+    <button mat-menu-item (click)="handleMenuAction('edit',listObj,index)">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item (click)="handleMenuAction('delete',listObj,index)">
+      <mat-icon>delete</mat-icon>
+      <span>Delete</span>
+    </button>
+  </ng-template>
+</mat-menu>

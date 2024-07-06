@@ -1,0 +1,28 @@
+<div class="form-container">
+  <form [formGroup]="renderFormGroup" (ngSubmit)="handleSubmit()" class="max-w-sm mx-auto form-container__group">
+    @for (field of formFields; track field.field;) {
+      <!-- <span class="form-container__input">
+        <label class="form-container__input__label" for="field.field">{{field.label}}</label>
+        <input [type]="field.type" [formControlName]="field.field">
+      </span> -->
+      <div class="mb-5">
+        <label [for]="field.field" class="block mb-2 text-sm font-medium text-gray-900">{{field.label}} {{field.required ? '*' : ''}}</label>
+        @if(field.type == 'textarea'){
+          <textarea class="block p-2.5 w-full h-48 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          [formControlName]="field.field" [placeholder]="field.placeholder"></textarea>
+        }@else{
+          <input  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          [class.form-container__group__input-error-state]="field.field.valid"
+           [type]="field.type" [formControlName]="field.field" [placeholder]="field.placeholder"/>
+        }
+      </div>
+
+    }
+    <div class="form-container__group__actions">
+      <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600"
+      type="submit" [disabled]="!renderFormGroup.valid" [class.form-container__group__actions--btn-disabled]="!renderFormGroup.valid" (click)="dialogInput?.action ? editForm() : null">{{dialogInput?.action ? 'Save' : 'Add Restaurant'}}</button>
+      <button class="text-white-700 bg-white hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+      type="reset" (click)="renderFormGroup.reset()">Reset</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,47 @@
+.form-container{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  &__input{
+    display: flex;
+    flex-direction: column;
+    input{
+      width: 40%;
+      background-color: #ffffff;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+    }
+    input[type=text], select {
+      width: 40%;
+    }
+    input[type=submit] {
+      background-color: grey;
+      width: 100%;
+      cursor: pointer;
+    }
+    input[type=tel] {
+      width: 30%;
+    }
+    input[type=textArea]{
+      width: 100%;
+    }
+  }
+  &__group{
+    &__input-error-state{
+      border: 1px solid red;
+    }
+    &__actions{
+      display: flex;
+      align-items: center;
+      justify-content:flex-end;
+      gap: 12px;
+      &--btn-disabled{
+        background-color: rgb(29 78 216);
+        cursor: not-allowed;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.manage-restaurants{
+  padding: 24px 0;
+  &__heading{
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+
+}
+
+@media screen and (max-width:599px) {
+  .manage-restaurants{
+    padding: 24px 12px;
+  }
+}
+
