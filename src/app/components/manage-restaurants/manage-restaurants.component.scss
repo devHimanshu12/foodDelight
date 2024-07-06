@@ -10,6 +10,9 @@
 @media screen and (max-width:599px) {
   .manage-restaurants{
     padding: 24px 12px;
+    &__add-btn{
+      padding: 50px;
+    }
   }
 }
 

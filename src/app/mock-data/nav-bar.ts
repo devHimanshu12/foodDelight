@@ -14,7 +14,7 @@ export const navBarItems:NavConfig[] = [
     id:1
   },
   {
-    label:'Add Eestaurant',
+    label:'Add Restaurant',
     routerLink:'add-restaurant',
     value:'add-restaurants',
     id:2
