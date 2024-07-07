@@ -7,7 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { CustomDialogComponent } from '../custom-dialog/custom-dialog.component';
 import { addRestrauntFields } from '../../mock-data/add-restraunts';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { LayoutService } from '../../services/layout.service';
 
 @Component({

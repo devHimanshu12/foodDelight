@@ -17,6 +17,7 @@ export class CustomDialogComponent {
   dialogData:any;
   isSmallDevice:boolean = false;
 
+  // @Optional we are using to handle dialogdata,dialogRef and bottomsheetdata and bottomsheet ref in single component 
   constructor(private layoutService:LayoutService,
     @Optional() public dialogRef:MatDialogRef<CustomDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
@@ -26,16 +27,14 @@ export class CustomDialogComponent {
 
   ngOnInit():void{
     this.isSmallDevice = this.layoutService.getSmallDevice()
-    console.log(this.isSmallDevice,this.bottomSheetData,this.data);
-
     this.dialogData = this.isSmallDevice ? this.bottomSheetData : this.data
   }
 
+  // this method expects one arugment if is true then is closes the dialog if view is desktop or bottomsheet if view is mobile
   closeDialog(event:boolean){
     if(event){
      this.isSmallDevice ? this._bottomSheetRef.dismiss() : this.dialogRef.close()
     }
-
   }
 
 }

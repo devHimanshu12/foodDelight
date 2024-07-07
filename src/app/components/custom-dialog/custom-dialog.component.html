@@ -1,2 +1,5 @@
-<app-render-form [formFields]="dialogData.renderFormList" [dialogInput]="dialogData"
-                  (dialogEvent)="closeDialog($event)"/>
+@if(dialogData?.renderFormList.length){
+  <app-render-form [formFields]="dialogData?.renderFormList" [dialogInput]="dialogData"
+                    (dialogEvent)="closeDialog($event)"/>
+}
+

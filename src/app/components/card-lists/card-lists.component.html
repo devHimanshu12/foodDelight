@@ -1,7 +1,7 @@
 <div class="lists-container">
   <div class="lists-container__header">
     <div class="lists-container__header__name">
-        {{lists.name | titlecase}}
+        {{lists?.name | titlecase}}
     </div>
     <div class="lists-container__header__action">
         <button mat-icon-button [matMenuTriggerFor]="menu" [matMenuTriggerData]="{listObj: lists,index:formIndex}"
@@ -9,19 +9,18 @@
                 aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>
        </button>
-      <!-- <button type="button" class="lists-container__header__action--delete-btn">Delete</button> -->
     </div>
   </div>
   <div class="lists-container__items">
     <div class="lists-container__items__fields">
-      <span class="lists-container__items__fields__location">Location: {{lists.location}}</span>
-      <span class="lists-container__items__fields__phone">Contact: <b>{{lists.phone}}</b> </span>
-      <span class="lists-container__items__fields__email">Email: {{lists.email}}</span>
+      <span class="lists-container__items__fields__location">Location: {{lists?.location}}</span>
+      <span class="lists-container__items__fields__phone">Contact: <b>{{lists?.phone}}</b> </span>
+      <span class="lists-container__items__fields__email">Email: {{lists?.email}}</span>
 
     </div>
     <div class="lists-container__items__description">
-      <div class="lists-container__items__fields__email">Type of Restaurant: {{lists.style | titlecase}}</div>
-      <div class="lists-container__items__email">{{lists.description}}</div>
+      <div class="lists-container__items__fields__email">Type of Restaurant: {{lists?.style | titlecase}}</div>
+      <div class="lists-container__items__email">{{lists?.description}}</div>
     </div>
   </div>
 </div>

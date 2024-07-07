@@ -1,3 +1,4 @@
-<!-- <a class="link" [routerLink]="linkConfig.routerLink" >{{linkConfig.label}}</a> -->
-<a href="#" class="link block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page"
-[routerLink]="linkConfig.routerLink" routerLinkActive="is-active">{{linkConfig.label}}</a>
+ @if(linkConfig){
+   <a href="#" class="link block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page"
+   [routerLink]="linkConfig.routerLink" routerLinkActive="is-active">{{linkConfig.label}}</a>
+ }

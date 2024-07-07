@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ManageService {
 
+  // behavioural subject to handle list of restaurant centrally
   private $listRestaurants = new BehaviorSubject<Lists[]>([]);
   listsOfRestaurants:Lists[] = []
 
@@ -23,6 +24,7 @@ export class ManageService {
     return this.$listRestaurants.asObservable();
   }
 
+  // editdata expcets two arguments index and editedData which will return new array with edited item in it
   editData(index:number,editedData:Lists){
     this.listsOfRestaurants = this.listsOfRestaurants.map((item:Lists,idx:number)=>{
       if(idx === index){
@@ -33,11 +35,13 @@ export class ManageService {
     this.$listRestaurants.next(this.listsOfRestaurants)
   }
 
+  // delete method which expects only index of an list of restaurants to return new array without deleted item
   deleteItem(index:number){
     this.listsOfRestaurants = this.listsOfRestaurants.filter((item,idx)=> index !== idx)
     this.$listRestaurants.next(this.listsOfRestaurants)
   }
 
+  // mock api with array of restaurants details
   getList(){
     let url = "https://668996d70ea28ca88b886b38.mockapi.io/get/restaurantLists"
     return this.http.get(url)

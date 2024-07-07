@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ManageRestaurantsComponent } from './manage-restaurants.component';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+
+
 
 describe('ManageRestaurantsComponent', () => {
   let component: ManageRestaurantsComponent;
@@ -8,7 +10,8 @@ describe('ManageRestaurantsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ManageRestaurantsComponent]
+      imports: [ManageRestaurantsComponent],
+      providers:[provideHttpClient(),HttpClient]
     })
     .compileComponents();
 
@@ -20,4 +23,10 @@ describe('ManageRestaurantsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should initialize restaurantArray with empty array', () => {
+    expect(component.restaurantArray).toEqual([]);
+  });
+
+
 });

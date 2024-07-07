@@ -10,7 +10,8 @@ export class LayoutService {
 
   constructor(private breakpointObserver: BreakpointObserver) { }
 
-  getSmallDevice(){
+  // common method to get isSmalldevice which be boolean
+  getSmallDevice():boolean{
     this.checkBreakPoints()
     return this.isSmallDevice
   }

@@ -4,7 +4,7 @@ import { ManageRestaurantsComponent } from './components/manage-restaurants/mana
 import { AddRestaurantsComponent } from './components/add-restaurants/add-restaurants.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo:'home',pathMatch:'full' },
+  { path: '', redirectTo:'restaurants',pathMatch:'full' },
   {path:'home',component:HomeComponent},
   { path: 'restaurants', component: ManageRestaurantsComponent },
   { path: 'add-restaurant', component: AddRestaurantsComponent },
