@@ -3,6 +3,6 @@ export type Lists = {
   location:string,
   phone:number,
   email:string,
-  style?:string,
+  style?:string
   description?:string
 }
