@@ -1,14 +1,31 @@
 .link {
   text-decoration: none;
-  color: #000;
+  color: #ffffff;
   padding: 0.5rem 1rem;
 
   &--active {
-    color: #007bff;
     font-weight: bold;
   }
 
   &:hover {
     color: #0056b3;
   }
+
+
+}
+
+.is-active{
+  color: #007bff;
+}
+
+@media screen and (max-width:768px) {
+  .link{
+    &:hover {
+      color: #000000;
+    }
+  }
+  .is-active{
+    color: #000000;
+  }
+
 }

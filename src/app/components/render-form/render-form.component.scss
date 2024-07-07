@@ -33,6 +33,9 @@
     &__input-error-state{
       border: 1px solid red;
     }
+    &__input-error{
+      color: red;
+    }
     &__actions{
       display: flex;
       align-items: center;
@@ -40,7 +43,7 @@
       gap: 12px;
       &--btn-disabled{
         background-color: rgb(29 78 216);
-        cursor: not-allowed;
+        // cursor: not-allowed;
       }
     }
   }

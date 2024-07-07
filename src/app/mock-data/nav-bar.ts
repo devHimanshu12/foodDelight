@@ -3,7 +3,7 @@ import { NavConfig } from "../model/interfaces/navConfig";
 export const navBarItems:NavConfig[] = [
   {
     label:'Home',
-    routerLink:'/',
+    routerLink:'home',
     value:'home',
     id:0
   },

@@ -1,9 +1,9 @@
 .main-wrapper{
-  width: calc(100% - 600px);
+  width: calc(100% - 300px);
   margin: auto;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:768px) {
   .main-wrapper{
     width: 100vw;
   }

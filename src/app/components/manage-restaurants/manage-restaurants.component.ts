@@ -6,6 +6,9 @@ import { RenderFormComponent } from '../render-form/render-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomDialogComponent } from '../custom-dialog/custom-dialog.component';
 import { addRestrauntFields } from '../../mock-data/add-restraunts';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-manage-restaurants',
@@ -18,29 +21,21 @@ export class ManageRestaurantsComponent {
 
 
   restaurantArray!: any;
+  isSmallDevice: boolean = false
 
-  constructor(private manageService: ManageService, private dialog: MatDialog) { }
+  constructor(private manageService: ManageService,
+    private dialog: MatDialog,
+    private bottomSheet: MatBottomSheet,
+    private layoutService: LayoutService) { }
 
   ngOnInit(): void {
+    // to check width of device to handle mobile view dialog or bottom sheet
+    this.isSmallDevice = this.layoutService.getSmallDevice()
 
     // subscribing to the getData method to keep an eye on action taken and update the array
     this.manageService.getData().subscribe({
       next: (response) => {
         this.restaurantArray = response
-      }
-    })
-
-    // calling the api through getListOfRestaurants method and hitting the mock api and
-    // if don't want to see mock sample then comment the below method(line)
-    // this.getListOfRestaurants()
-  }
-
-  getListOfRestaurants() {
-    this.manageService.getList().subscribe({
-      next: (res) => {
-        this.restaurantArray = res
-        // to add sample data from mock api to listsOfRestaurants in manage service to control list from service like edit and delete
-        this.restaurantArray.forEach((_e: Lists) => this.manageService.addRestrauntData(_e))
       }
     })
   }
@@ -62,9 +57,9 @@ export class ManageRestaurantsComponent {
 
     const config = {
       data: data,
-      width: '60vw'
+      width: this.isSmallDevice ? '100vw' : '60vw'
     }
-    this.dialog.open(CustomDialogComponent, config)
+    this.isSmallDevice ? this.bottomSheet.open(CustomDialogComponent,config) : this.dialog.open(CustomDialogComponent, config)
   }
 
   // handling the deletion of items of lists through index (with actual data it can be handled by actual in backend or frontend )

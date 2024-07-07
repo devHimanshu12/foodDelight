@@ -15,7 +15,7 @@ export class ManageService {
   constructor(private http: HttpClient ) { }
 
   addRestrauntData(data:Lists){
-    this.listsOfRestaurants.push(data)
+    this.listsOfRestaurants.unshift(data)
     this.$listRestaurants.next(this.listsOfRestaurants)
   }
 

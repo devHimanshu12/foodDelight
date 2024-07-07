@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { LinkConfig } from '../../model/interfaces/linkConfig';
 
 @Component({
   selector: 'app-link',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,RouterLinkActive],
   templateUrl: './link.component.html',
   styleUrl: './link.component.scss'
 })

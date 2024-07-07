@@ -3,8 +3,6 @@ import { Lists } from '../../model/type/listsType';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialog } from '@angular/material/dialog';
-import { RenderFormComponent } from '../render-form/render-form.component';
 
 
 @Component({

@@ -1,5 +1,10 @@
-.home{
+.home {
   margin: 0 auto;
   padding: 1rem 0;
-  width: calc(100% - 400px);
+}
+
+@media screen and (max-width:768px) {
+  .home {
+    padding: 0.5rem 16px;
+  }
 }

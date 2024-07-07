@@ -24,7 +24,7 @@ export const addRestrauntFields = [
     label:'Email',
     field:'email',
     type:'email',
-    required:false,
+    required:true,
     placeholder:'example: xyz@gmail.com'
   },
   {

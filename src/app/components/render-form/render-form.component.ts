@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Lists } from '../../model/type/listsType';
 import { ManageService } from '../../services/manage.service';
 import { Router } from '@angular/router';
@@ -17,6 +17,7 @@ export class RenderFormComponent implements OnInit {
   @Input() formFields:any[] = []
   @Input() dialogInput:any;
   @Output() dialogEvent = new EventEmitter<boolean>(false)
+  steps = 0.25
   restrauantsArray:Lists[] = []
   constructor(private manageService:ManageService,
     private router:Router
@@ -27,7 +28,20 @@ export class RenderFormComponent implements OnInit {
   ngOnInit():void{
     const formControlObject:any = {}
     this.formFields.forEach((elem)=>{
-        formControlObject[elem.field] = elem.required ? new FormControl('',[Validators.required]) : new FormControl('')
+      console.log(elem);
+
+      switch (elem.type) {
+        case 'email':
+          formControlObject[elem.field] = new FormControl('',[Validators.required,Validators.email])
+          break;
+        case 'tel':
+          formControlObject[elem.field] =  new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/),Validators.maxLength(10),Validators.minLength(10)])
+          break;
+
+        default:
+          formControlObject[elem.field] = elem.required ? new FormControl('',[Validators.required]) : new FormControl('')
+          break;
+      }
       })
 
     this.renderFormGroup = new FormGroup({...formControlObject})
@@ -35,15 +49,30 @@ export class RenderFormComponent implements OnInit {
     if(this.dialogInput){
       this.patchValue(this.dialogInput.selectedList)
     }
+  }
 
+
+  get email(){
+    return this.renderFormGroup.get('email')
+  }
+
+  get phone(){
+    return this.renderFormGroup.get('phone')
   }
 
   handleSubmit(){
-    if(this.dialogInput){
-      this.dialogEvent.emit(true)
+    if(this.renderFormGroup.invalid){
+      console.log(this.renderFormGroup);
+      this.renderFormGroup.markAllAsTouched()
+      window.alert('Please fill all required fields marked with * and use correct formats for phone and email')
+      return
     }else{
-      this.manageService.addRestrauntData(this.renderFormGroup.value)
-      this.router.navigateByUrl('/restaurants')
+      if(this.dialogInput){
+        this.dialogEvent.emit(true)
+      }else{
+        this.manageService.addRestrauntData(this.renderFormGroup.value)
+        this.router.navigateByUrl('/restaurants')
+      }
     }
   }
 
