@@ -9,6 +9,7 @@ import { restaurantSample } from './mock-data/restrauantsLists';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,NavBarComponent],
+  providers:[ManageService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

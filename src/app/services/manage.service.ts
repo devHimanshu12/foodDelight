@@ -46,4 +46,8 @@ export class ManageService {
     let url = "https://668996d70ea28ca88b886b38.mockapi.io/get/restaurantLists"
     return this.http.get(url)
   }
+
+  getPlaceholderData(endpoint:string){
+    return this.http.get(endpoint)
+  }
 }

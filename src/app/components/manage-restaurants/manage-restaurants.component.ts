@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Pipe } from '@angular/core';
 import { ManageService } from '../../services/manage.service';
 import { CardListsComponent } from '../card-lists/card-lists.component';
 import { Lists } from '../../model/type/listsType';
@@ -8,19 +8,22 @@ import { CustomDialogComponent } from '../custom-dialog/custom-dialog.component'
 import { addRestrauntFields } from '../../mock-data/add-restraunts';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { LayoutService } from '../../services/layout.service';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from '../../pipes/search.pipe';
 
 @Component({
   selector: 'app-manage-restaurants',
   standalone: true,
-  imports: [CardListsComponent, RenderFormComponent],
+  imports: [CardListsComponent, RenderFormComponent,FormsModule,SearchPipe],
   templateUrl: './manage-restaurants.component.html',
   styleUrl: './manage-restaurants.component.scss'
 })
 export class ManageRestaurantsComponent {
 
 
-  restaurantArray!: any;
+  restaurantArray: Lists[] = [];
   isSmallDevice: boolean = false
+  searchTerm:string = '';
 
   constructor(private manageService: ManageService,
     private dialog: MatDialog,

@@ -1,0 +1,14 @@
+.landing{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  &__card{
+    margin: 16px;
+    border: 1px solid black;
+    h1{
+      font-size: 16px;
+      padding: 12px;
+    }
+    width: calc(33.3% - 32px)
+  }
+}

@@ -1,13 +1,19 @@
 <div class="manage-restaurants">
-    <div class="manage-restaurants__heading">List of Restaurants</div>
+  <div class="manage-restaurants__header">
+    <div class="manage-restaurants__header__label">List of Restaurants</div>
+    <div class="manage-restaurants__header--search-box">
+      <input type="text" placeholder="Search name of restaurants" [(ngModel)]="searchTerm">
+    </div>
+  </div>
      @if(!restaurantArray.length){
       <div>There is no Restaurants, click on Add Restaurant from menu to add new Restaurant</div>
+     }@else{
+       <div class="manage-restaurants__lists">
+         @for(list of restaurantArray | search:searchTerm; track list.name; let idx = $index){
+           <app-card-lists  [lists]="list" (actionEvent)="handleAction($event)" [formIndex]="idx"/>
+         }
+       </div>
      }
-  <div class="manage-restaurants__lists">
-    @for(list of restaurantArray; track list.name; let idx = $index){
-      <app-card-lists [lists]="list" (actionEvent)="handleAction($event)" [formIndex]="idx"/>
-    }
-  </div>
 </div>
 
 

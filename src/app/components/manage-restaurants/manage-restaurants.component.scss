@@ -1,8 +1,24 @@
 .manage-restaurants{
   padding: 24px 0;
-  &__heading{
-    font-weight: 900;
-    margin-bottom: 12px;
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    &__label{
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    &--search-box{
+      width: 300px;
+      border-radius: 4px;
+      margin-left: 10px;
+      input{
+        width: 100%;
+        padding: 4px;
+        border-radius: 4px;
+        border: 1px solid gray;
+      }
+    }
+
   }
 
 }
@@ -15,4 +31,7 @@
     }
   }
 }
+
+
+
 

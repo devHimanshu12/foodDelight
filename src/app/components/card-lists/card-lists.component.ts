@@ -3,12 +3,13 @@ import { Lists } from '../../model/type/listsType';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { zoomElementDirective } from '../../directives/zoom';
 
 
 @Component({
   selector: 'app-card-lists',
   standalone: true,
-  imports: [TitleCasePipe,MatMenuModule,MatIconModule],
+  imports: [TitleCasePipe,MatMenuModule,MatIconModule,zoomElementDirective],
   templateUrl: './card-lists.component.html',
   styleUrl: './card-lists.component.scss'
 })

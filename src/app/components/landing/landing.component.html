@@ -1,0 +1,16 @@
+<ng-container *ngIf="loading;else showData">
+  <div>...loading</div>
+</ng-container>
+<ng-template #showData>
+  <div class="landing">
+  <div>{{mySignal()}}</div>
+    <ng-container *ngFor="let item of data; let i = index">
+      <div class="landing__card" >
+        <h1>{{item.title}}</h1>
+        <div>{{item.body}}</div>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
+
+
